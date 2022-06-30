@@ -23,6 +23,7 @@ CREATE TABLE inventory(
 );
 CREATE TABLE catalogue(
     dish_name VARCHAR(255),
+    available BOOLEAN,
     genre VARCHAR(255),
     cook_item INT,
     quantity INT,
