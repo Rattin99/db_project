@@ -1,4 +1,4 @@
--- USE db_project;
+USE db_project;
 
 -- TABLES
 CREATE TABLE expenditure(
@@ -72,7 +72,7 @@ CREATE TABLE customer(
     PRIMARY KEY (customer_id)
 );
 CREATE TABLE bill(
-    bill_id INT AUTO_INCREMENT,
+    bill_id INT,
     customer_id INT,
     payment_total INT,
     payment_paid INT,

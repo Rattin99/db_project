@@ -24,7 +24,10 @@ router.post('/order',(req,res) => {
 })
 
 router.post('/bill',(req,res) =>{
-    const sql = `INSERT INTO bill ( bill_id, customer_id,payment_total,payment_paid,payment_returned, _date,  _time ) VALUES (${req.body.bill_id},${req.body.customer_id},${req.body.payment_total},${req.body.payment_paid},${req.body.payment_returned},"${req.body._date}","${req.body._time}")`
+    let sql = `INSERT INTO bill ( bill_id,customer_id,payment_total,payment_paid,payment_returned, _date,  _time ) VALUES (${req.body.bill_id},${req.body.customer_id},${req.body.payment_total},${req.body.payment_paid},${req.body.payment_returned},"${req.body._date}","${req.body._time}");`
+    req.body.item.map((value, idx) => {
+        sql += `INSERT INTO item ( bill_id, item_name ) VALUES (${req.body.bill_id},"${value}");`;
+    });
 
     db.query(sql, (err,result) => {
         if(err) throw err; 
@@ -84,7 +87,7 @@ router.post('/ingredient',(req,res) =>{
 
 
 router.post('/inventory',(req,res) =>{
-    const sql = `INSERT INTO inventory (item_id,item_name,quantity,_provider,_location) VALUES ("${req.body.item_id}","${req.body.item_name}",${req.body.quantity},"${req.body._provider}","${req.body._location}")`
+    const sql = `INSERT INTO inventory (item_name,quantity,_provider,_location) VALUES ("${req.body.item_name}",${req.body.quantity},"${req.body._provider}","${req.body._location}")`
 
     
     db.query(sql, (err,result) => {
