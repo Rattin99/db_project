@@ -100,8 +100,8 @@ CREATE TABLE employee(
 CREATE TABLE emp_schedule(
     schedule_id INT AUTO_INCREMENT,
     employee_id INT,
-    start_time INT,
-    end_time INT,
+    start_time TIME,
+    end_time TIME,
     _date DATE,
     
     PRIMARY KEY (schedule_id),
