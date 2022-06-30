@@ -5,7 +5,8 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'sami',
     password: 'sami6620',
-    database: 'db_project'
+    database: 'db_project',
+    multipleStatements: true
 })
 
 db.connect((err) => {
