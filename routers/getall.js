@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../db/db');
+const db = require('../db/db')
 
 const router = express.Router();
 
@@ -15,6 +15,7 @@ router.get('/:tableName',(req,res) =>{
         res.send(result)
     })
 })
+
 
 
 
