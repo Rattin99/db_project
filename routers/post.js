@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.post('/employee',(req,res) =>{
-    const sql = `INSERT INTO employee (employee_id,employee_name,role,salary,supervisor) VALUES (${req.body.id},"${req.body.name}","${req.body.role}",${req.body.salary},"${req.body.supervisor}")`
+    const sql = `INSERT INTO employee (employee_id,employee_name,role,salary,supervisor) VALUES (${req.body.employee_id},"${req.body.employee_name}","${req.body.role}",${req.body.salary},"${req.body.supervisor}")`
 
     db.query(sql,(err,result) =>{
         if(err) throw err;
@@ -24,7 +24,11 @@ router.post('/order',(req,res) => {
 })
 
 router.post('/bill',(req,res) =>{
-    const sql = `INSERT INTO bill ( bill_id, customer_id,payment_total,payment_paid,payment_returned, _date,  _time ) VALUES (${req.body.bill_id},${req.body.customer_id},${req.body.payment_total},${req.body.payment_paid},${req.body.payment_returned},"${req.body._date}","${req.body._time}")`
+    let sql = `INSERT INTO bill ( bill_id, customer_id,payment_total,payment_paid,payment_returned, _date,  _time ) VALUES (${req.body.bill_id},${req.body.customer_id},${req.body.payment_total},${req.body.payment_paid},${req.body.payment_returned},"${req.body._date}","${req.body._time}");`
+
+    req.body.items.map((value, idx) => {
+        sql += `INSERT INTO item ( bill_id, item_name ) VALUES (${req.body.bill_id},"${value}");`;
+    });
 
     db.query(sql, (err,result) => {
         if(err) throw err; 
@@ -104,6 +108,14 @@ router.post('/reservation',(req,res) =>{
     })
 })
 
+router.post('/emp_schedule',(req,res) =>{
+    const sql = `INSERT INTO emp_schedule(employee_id,start_time,end_time,_date) VALUES (${req.body.employee_id},"${req.body.start_time}","${req.body.end_time}","${req.body._date}");`
+    
+    db.query(sql, (err,result) => {
+        if(err) throw err; 
+        res.send(result)
+    })
+})
 
 
 
