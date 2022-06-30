@@ -14,10 +14,9 @@ CREATE TABLE expenditure(
     PRIMARY KEY (purchase_id)
 );
 CREATE TABLE inventory(
-    item_id INT AUTO_INCREMENT,
     item_name VARCHAR(255),
     quantity INT,
-    PRIMARY KEY (item_id)
+    PRIMARY KEY (item_name)
 );
 CREATE TABLE _provider(
     item_name VARCHAR(255),
@@ -101,9 +100,9 @@ CREATE TABLE emp_schedule(
 
 CREATE TABLE populates(
     purchase_id INT,
-    item_id INT,
+    item_name VARCHAR(255),
     FOREIGN KEY (purchase_id) REFERENCES expenditure(purchase_id),
-    FOREIGN KEY (item_id) REFERENCES inventory(item_id)
+    FOREIGN KEY (item_name) REFERENCES inventory(item_name)
 );
 CREATE TABLE dictates(
     item_id INT,
