@@ -17,13 +17,23 @@ router.post('/expenditure', (req, res) => {
 
 
 router.post('/inventory', (req, res) => {
-    const sql = `INSERT INTO inventory (item_name,quantity,_provider,_location) VALUES ("${req.body.item_name}",${req.body.quantity},"${req.body._provider}","${req.body._location}");`;
+    const sql = `INSERT INTO inventory (item_name,quantity) VALUES ("${req.body.item_name}",${req.body.quantity}");`;
 
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 });
+
+
+router.post('/provider', (req, res) => {
+    const sql = `INSERT INTO _provider (item_name, provider_name) VALUES ("${req.body.item_name}, ${req.body.provider_name}");`;
+
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+})
 
 
 router.post('/catalogue', (req, res) => {

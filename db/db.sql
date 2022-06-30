@@ -17,9 +17,12 @@ CREATE TABLE inventory(
     item_id INT AUTO_INCREMENT,
     item_name VARCHAR(255),
     quantity INT,
-    _provider VARCHAR(255),
-    _location VARCHAR(255),
     PRIMARY KEY (item_id)
+);
+CREATE TABLE _provider(
+    item_name VARCHAR(255),
+    provider_name VARCHAR(255),
+    FOREIGN KEY (item_name) REFERENCES inventory(item_name)
 );
 CREATE TABLE catalogue(
     dish_name VARCHAR(255),
