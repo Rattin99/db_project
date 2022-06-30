@@ -1,3 +1,5 @@
+DROP DATABASE db_project;
+CREATE DATABASE db_project;
 USE db_project;
 
 -- TABLES
@@ -36,7 +38,6 @@ CREATE TABLE ingredient(
     dish_name VARCHAR(255),
     ingredient_name VARCHAR(255),
     
-    PRIMARY KEY (ingredient_name),
     FOREIGN KEY (dish_name) REFERENCES catalogue(dish_name)
 );
 CREATE TABLE _order(
@@ -52,7 +53,6 @@ CREATE TABLE dishes(
     order_id INT,
     dish_name VARCHAR(255),
     
-    PRIMARY KEY (dish_name),
     FOREIGN KEY (order_id) REFERENCES _order(order_id)
 );
 CREATE TABLE reservation(
@@ -86,7 +86,6 @@ CREATE TABLE item(
     bill_id INT,
     item_name VARCHAR(255),
     
-    PRIMARY KEY (item_name),
     FOREIGN KEY (bill_id) REFERENCES bill(bill_id)
 );
 CREATE TABLE employee(
