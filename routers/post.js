@@ -88,7 +88,7 @@ router.post('/ingredient',(req,res) =>{
 
 
 router.post('/inventory',(req,res) =>{
-    const sql = `INSERT INTO inventory (item_id,item_name,quantity,_provider,_location) VALUES ("${req.body.item_id}","${req.body.item_name}",${req.body.quantity},"${req.body._provider}","${req.body._location}")`
+    const sql = `INSERT INTO inventory (item_id,item_name,quantity,_location) VALUES ("${req.body.item_id}","${req.body.item_name}",${req.body.quantity},"${req.body._location}")`
 
     
     db.query(sql, (err,result) => {

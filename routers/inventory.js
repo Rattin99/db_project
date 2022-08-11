@@ -16,8 +16,22 @@ router.get('/:item_name',(req,res) =>{
 })
 
 
-router.put('/:item_name/:quantity',(res,req) =>{
-    const sql = ``
+router.put('/:item_name/:quantity',(req,res) =>{
+
+    const quantity = req.params.quantity;
+
+    console.log(req.params.item_name)
+
+    const sql = `UPDATE inventory 
+    SET 
+        quantity = quantity - ${quantity}
+    WHERE item_name = "${req.params.item_name}"`;
+
+    db.query(sql,(err,result) =>{
+        if(err) throw err;
+
+        res.send(result);
+    })
 })
 
 
