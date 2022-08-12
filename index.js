@@ -18,7 +18,7 @@ app.use('/inventory/',inventory)
 
 
 // const port = Math.floor(Math.random()*(65536-49152)+49152).toString();
-const port = 50001;
+const port = 3001;
 app.listen(port, () => {
     console.log('Server started on port ' + port + ":");
     console.log('http://localhost:' + port);
