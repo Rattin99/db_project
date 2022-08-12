@@ -40,7 +40,7 @@ router.post('/catalogue', (req, res) => {
     let sql = `INSERT INTO catalogue ( dish_name, available, genre, cook_item, quantity, price, category) VALUES ("${req.body.dish_name}","${req.body.available}","${req.body.genre}",${req.body.cook_item},${req.body.quantity},${req.body.price},"${req.body.category}");`;
     
     req.body.ingredients.forEach((value) => {
-        sql += `INSERT INTO ingredient ( dish_name, ingredient_name ) VALUES ("${req.body.dish_name}","${value}");`;
+        sql += `INSERT INTO ingredient ( dish_name, ingredient_name ) VALUES ("${req.body.dish_name}","${value.trim()}");`;
     });
 
     db.query(sql, (err, result) => {
