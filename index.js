@@ -4,7 +4,7 @@ const postRouter = require('./routers/post');
 const menu = require('./routers/menu')
 const inventory = require('./routers/inventory') 
 const cors = require('cors');
-
+const deleteRouter = require('./routers/delete')
 const app = express()
 
 app.use(cors({
@@ -15,6 +15,7 @@ app.use('/getall/',router)
 app.use('/api/',postRouter);
 app.use('/menu/',menu);
 app.use('/inventory/',inventory)
+app.use('/delete',deleteRouter)
 
 
 // const port = Math.floor(Math.random()*(65536-49152)+49152).toString();
