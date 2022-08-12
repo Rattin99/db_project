@@ -157,3 +157,44 @@ CREATE TABLE works(
 );
 
 SELECT * FROM expenditure;
+
+INSERT INTO inventory (item_name, quantity) VALUES ('rice', 5);
+INSERT INTO inventory (item_name, quantity) VALUES ('lentil', 3);
+INSERT INTO inventory (item_name, quantity) VALUES ('potato', 3);
+
+INSERT INTO catalogue (
+    dish_name,
+    available,
+    genre,
+    cook_item,
+    quantity,
+    price,
+    category
+  )
+VALUES (
+    'Fried Rice',
+    '1',
+    'Chinese',
+    3,
+    2,
+    140,
+    'main dish'
+  );
+INSERT INTO catalogue (
+    dish_name,
+    available,
+    genre,
+    cook_item,
+    quantity,
+    price,
+    category
+  )
+VALUES (
+    'Chicken Curry',
+    '1',
+    'Indian',
+    2,
+    3,
+    50,
+    'main dish'
+  );
