@@ -198,3 +198,25 @@ VALUES (
     50,
     'main dish'
   );
+
+  INSERT INTO bill (
+      bill_id,
+      customer_id,
+      payment_total,
+      payment_paid,
+      payment_returned,
+      _date,
+      _time
+    )
+  VALUES (
+      100,
+      100,
+      940,
+      1000,
+      60,
+      '2021-08-12',
+      '14:03:24'
+    );
+
+INSERT INTO item (bill_id, item_name)
+VALUES (100, 'Doi Chira 2');
