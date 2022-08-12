@@ -37,8 +37,12 @@ router.post('/bill',(req,res) =>{
 })
 
 router.post('/catalogue',(req,res) =>{
-    const sql = `INSERT INTO catalogue ( dish_name, genre, cook_item, quantity, price, category) 
+    let sql = `INSERT INTO catalogue ( dish_name, genre, cook_item, quantity, price, category) 
     VALUES (" ${req.body.dish_name} "," ${req.body.genre} "," ${req.body.cook_item} "," ${req.body.quantity} "," ${req.body.price} "," ${req.body.category} ")`
+
+    req.body.ingredients.map((value,index)=>{
+         sql += `INSERT INTO ingredient ( dish_name, ingredient_name ) VALUES ("${req.body.dish_name}","${value}");`;
+    })
 
     db.query(sql, (err,result) => {
         if(err) throw err; 
